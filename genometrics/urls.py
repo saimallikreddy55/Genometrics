@@ -21,4 +21,6 @@ urlpatterns = [
     path('', include('Home.urls')),
     path('admin/', admin.site.urls),
     path('reglogin/', include('reglogin.urls')),
+    path('predict_diabetes/', include('predict_diabetes.urls')),
+    path('predict_heart/', include('predict_heart.urls')),
 ]

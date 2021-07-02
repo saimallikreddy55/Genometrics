@@ -2,6 +2,7 @@ from django.contrib import messages
 from .models import Register
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User, auth
+from django.core.mail import send_mail
 
 
 def login(request):
@@ -43,6 +44,13 @@ def register(request):
                 user = User.objects.create_user(username=name,password=password1,email=email)
                 user.save();
                 messages.info(request,'You Have Registerd')
+                send_mail(
+                                'Subject here',
+                                'Here is the message.',
+                                'from@example.com',
+                                ['to@example.com'],
+                                fail_silently=False,
+                          )
                 return redirect('login')
            
         else:

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Heart Disease Prediction Form</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <style>
+      html, body {
+      min-height: 100%;
+      }
+      body, div, form, input, textarea, p { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: #666;
+      line-height: 22px;
+      }
+      h1 {
+      position: absolute;
+      margin: 0;
+      font-size: 32px;
+      color: #fff;
+      z-index: 2;
+      }
+      .testbox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: inherit;
+      padding: 20px;
+      }
+      form {
+      width: 100%;
+      padding: 20px;
+      border-radius: 6px;
+      background: #fff;
+      box-shadow: 0 0 10px 0 #cc0052; 
+      }
+      .banner {
+      position: relative;
+      height: 210px;
+      background-image: url("picture.jepg")      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      }
+      .banner::after {
+      content: "";
+      background-color: rgba(0, 0, 0, 0.4); 
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      }
+      input, textarea {
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      }
+      input {
+      width: calc(100% - 10px);
+      padding: 5px;
+      }
+      textarea {
+      width: calc(100% - 12px);
+      padding: 5px;
+      }
+      .item:hover p, input:hover::placeholder {
+      color: #cc0052;
+      }
+      .item input:hover, .item textarea:hover {
+      border: 1px solid transparent;
+      box-shadow: 0 0 6px 0 #cc0052;
+      color: #cc0052;
+      }
+      .item {
+      position: relative;
+      margin: 10px 0;
+      }
+      .btn-block {
+      margin-top: 10px;
+      text-align: center;
+      }
+      button {
+      width: 150px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px; 
+      background: #cc0052;
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      }
+      button:hover {
+      background: #ff0066;
+      }
+      @media (min-width: 568px) {
+      .name-item, .contact-item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      }
+      .contact-item .item {
+      width: calc(50% - 8px);
+      }
+      .name-item input {
+      width: calc(50% - 20px);
+      }
+      .contact-item input {
+      width: calc(100% - 12px);
+      }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="testbox">
+      <form action="{% url 'result' %}">
+	      {% csrf_token %}
+        <div class="banner">
+          <h1>Heart Disease Prediction Form</h1>
+        </div>
+        <div class="item">
+          <p>Age</p>
+          <div class="name-item">
+            <input type="text"  required name="age" placeholder="Your Age" />
+          </div>
+        </div>
+          <div class="item">
+            <p>Gender</p>
+            <input type="text" required name="sex" placeholder="Your Gender"/>
+          </div>
+          <div class="item">
+            <p>Chest Pain Type</p>
+	    <p>Chest Pain usually has 4 levels(0,1,2,3). This can be known only through tests.</p>
+            <input type="text" required name="cp" placeholder="Your Chest Pain Type"/>
+          </div>
+        <div class="item">
+          <p>Serum Cholestoral in mg/dl</p>
+	  <p>To know this value, tests needs to be performed. Please visit your nearest PHC or a Diagnostic center.
+	  </p>
+          <input type="text" required name="trestbps" placeholder="Your Serum Cholestoral Level"/>
+        </div>
+	<div class="item">
+          <p>Your Cholestoral Levels</p>
+	  <p>This again requires a doctor consulation to be measured. </p>
+          <input type="text" required name="chol" placeholder="Your cholestoral levels"/>
+        </div>
+        <div class="item">
+          <p>Blood Sugar Levels checked with Fasting</p>
+         <input type="text" required name="fbs" placeholder="Your Blood Sugar Levels with Fasting"/>
+        </div>
+        <div class="item">
+          <p>Resting ECG Levels</p>
+	  <p>
+		  These values can be known only if you get an ECG done. Usually hospitals recommend this once
+		  you have a consultation done! So be sure to visit your nearest PHC for furthur information. 
+	  </p>
+          <input type="text" required name="restecg" placeholder="Your Resting ECG Levels"/>
+        </div>
+        <div class="item">
+          <p>Maximum Heart Rate</p>
+
+          <input type="text" required name="thalach" placeholder="Your maximum heart rate"/>
+        </div>
+        <div class="item">
+          <p>Excercise Induced Agina</p>
+	  <p>This again requires a doctor consulation to be measured. </p>
+          <input type="text" required name="exang" placeholder="Your exercise induced agina levels"/>
+        </div>
+	<div class="item">
+          <p>ST Depression induced by exercise relative to rest</p>
+	  <p>This again requires a doctor consulation to be measured. </p>
+          <input type="text" required name="oldpeak" placeholder="Your oldpeak value.."/>
+        </div>
+	<div class="item">
+          <p>Slope of the above value</p>
+	  <p>This again requires a doctor consulation and some diagnostic tests results for measuring. </p>
+          <input type="text" required name="slope" placeholder="Enter the value"/>
+        </div>
+	<div class="item">
+          <p>Number of major vessels </p>
+	  <p>Usually ranges form 0-3. The coloration is done by flouroscopy</p>
+	  <p>This again requires a doctor consulation to be measured. </p>
+          <input type="text" required name="ca" placeholder="Enter a value between 0-3"/>
+        </div>
+	<div class="item">
+          <p>Thal Value</p>
+	  <p>Normal=3, fixed defect=6, 7= reversable defect</p>
+	  <p>This again requires a doctor consulation and diagnostic tests to be measured. </p>
+          <input type="text" required name="thal" placeholder="Enter a value from the above given values"/>
+        </div>
+        <div class="btn-block">
+          <button type="submit" href="/">SUBMIT</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

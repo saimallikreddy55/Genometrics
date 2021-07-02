@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'reglogin',
+    'predict_diabetes',
+    'predict_heart',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
