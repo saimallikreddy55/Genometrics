@@ -23,4 +23,5 @@ urlpatterns = [
     path('reglogin/', include('reglogin.urls')),
     path('predict_diabetes/', include('predict_diabetes.urls')),
     path('predict_heart/', include('predict_heart.urls')),
+    path('chatbot/', include('chatbot.urls')),
 ]
